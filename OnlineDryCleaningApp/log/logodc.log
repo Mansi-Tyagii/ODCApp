@@ -1,0 +1,30 @@
+2021-03-24 13:55:01,378 INFO com.cg.trg.app.OnlineDryCleaningAppApplication [restartedMain] Starting OnlineDryCleaningAppApplication using Java 1.8.0_281 on LAPTOP-8UQHL5JI with PID 1920 (D:\Sprint-Project\ODCpre\OnlineDryCleaningApp\target\classes started by mrunal in D:\Sprint-Project\ODCpre\OnlineDryCleaningApp)
+2021-03-24 13:55:01,385 DEBUG com.cg.trg.app.OnlineDryCleaningAppApplication [restartedMain] Running with Spring Boot v2.4.3, Spring v5.3.4
+2021-03-24 13:55:01,385 INFO com.cg.trg.app.OnlineDryCleaningAppApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-03-24 13:55:01,466 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-03-24 13:55:01,467 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-03-24 13:55:02,944 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-24 13:55:03,048 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 92 ms. Found 9 JPA repository interfaces.
+2021-03-24 13:55:04,557 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-03-24 13:55:04,577 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-03-24 13:55:04,578 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2021-03-24 13:55:04,578 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-24 13:55:04,773 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/springfox] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-03-24 13:55:04,774 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3307 ms
+2021-03-24 13:55:05,542 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-24 13:55:05,682 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-24 13:55:05,983 INFO org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-24 13:55:06,214 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2021-03-24 13:55:08,140 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2021-03-24 13:55:08,181 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-03-24 13:55:23,387 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-24 13:55:23,395 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-24 13:55:23,411 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-03-24 13:55:24,785 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-24 13:55:25,008 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-03-24 13:55:25,566 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-03-24 13:55:25,642 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path '/springfox'
+2021-03-24 13:55:25,858 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/springfox] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-24 13:55:25,858 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-03-24 13:55:25,862 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 4 ms
+2021-03-24 13:55:26,396 INFO com.cg.trg.app.OnlineDryCleaningAppApplication [restartedMain] Started OnlineDryCleaningAppApplication in 25.419 seconds (JVM running for 26.161)
