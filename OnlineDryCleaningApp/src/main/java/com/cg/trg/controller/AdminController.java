@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.cg.trg.entity.BookingItem;
 import com.cg.trg.entity.ItemCharges;
+import com.cg.trg.exception.BookingItemException;
 import com.cg.trg.exception.ItemChargesException;
 import com.cg.trg.service.IItemChargesService;
 
@@ -29,7 +31,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api/adm")
 @CrossOrigin(origins = "*")
 public class AdminController {
 	
@@ -107,15 +109,22 @@ public class AdminController {
 			consumes = "itemCharges ",
 			tags = "Update ItemCharges  record",
 			httpMethod = "PUT")
-	@PutMapping("/admin")
-	public ResponseEntity<ItemCharges> updateItemCharges(@RequestBody ItemCharges itemCharges) {
+	@PutMapping("/admin/{itemChargesId}")
+	public ResponseEntity<ItemCharges> updateItemCharges(@PathVariable Long itemChargesId,@RequestBody ItemCharges itemCharges) {
 		try {
-			ItemCharges emp= itemChargesService.updateItemCharges(itemCharges);
-			return new ResponseEntity<>(emp, HttpStatus.OK);
+			ItemCharges itmChar= itemChargesService.getItemCharges(itemChargesId);
+			itmChar.setChargesPerUnit(itemCharges.getChargesPerUnit());
+			itmChar.setItemCategory(itemCharges.getItemCategory());
+			itmChar.setServiceType(itemCharges.getServiceType());
+			
+			return new ResponseEntity<>(itemChargesService.updateItemCharges(itmChar), HttpStatus.OK);
 		}catch(ItemChargesException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
+	
+
+
 	
 	
 	/**

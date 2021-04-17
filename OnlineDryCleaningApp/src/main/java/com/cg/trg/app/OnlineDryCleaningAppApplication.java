@@ -34,7 +34,7 @@ public class OnlineDryCleaningAppApplication {
 	  }
 
 	  private Predicate<String> productPaths() {
-	    return regex(".*/api/admin/.*");
+	    return regex(".*/api/adm/.*");
 	  }
 	  
 	  @Bean

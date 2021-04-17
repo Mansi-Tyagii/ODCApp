@@ -19,4 +19,5 @@ public interface IBookingItemService {
 	public BookingItem updateBookingItem( BookingItem item)throws BookingItemException;
 	public BookingItem getBookingItem(Long bookingItemId)throws BookingItemException;
 	//public List<BookingItem> getBookingItemsByCustomer(Long bookingItemId)throws BookingItemException;
+	public List<BookingItem> getAllBookingItems() throws BookingItemException;
 }

@@ -16,8 +16,9 @@ import com.cg.trg.exception.UserException;
 public interface IUserService {
 
 	public String signup(User user) throws  UserException;
-	public String SignIn(String emailId, String password) throws UserException;
+	//public String SignIn(String emailId, String password) throws UserException;
 	public boolean emailIdExists(String emailId) ;
 	public String changePassword(String emailId, String newPass) throws UserException;
+	public String SignIn(String emailId, String password, String userType) throws UserException;
 	
 }

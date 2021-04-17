@@ -15,6 +15,7 @@ import com.cg.trg.entity.AddBookingItem;
 import com.cg.trg.entity.Booking;
 import com.cg.trg.entity.BookingItem;
 import com.cg.trg.entity.ItemCharges;
+import com.cg.trg.exception.BookingException;
 import com.cg.trg.exception.BookingItemException;
 
 
@@ -114,6 +115,8 @@ public class IBookingItemServiceImpl implements IBookingItemService  {
 			throw new BookingItemException(e.getMessage());
 		}
 	}
+	
+
 	/**
      * This method is used to Get BookingItem Using  BookingItemId
      */
@@ -134,6 +137,8 @@ public class IBookingItemServiceImpl implements IBookingItemService  {
 			throw new BookingItemException(e.getMessage());
 		}
 	}
+	
+
 
 //	@Override
 //	public List<BookingItem> getBookingItemsByCustomer(Long bookingItemId) throws BookingItemException{
@@ -153,6 +158,22 @@ public class IBookingItemServiceImpl implements IBookingItemService  {
 //		}
 //	}
 
+	
+	/**
+	 * This method is used to GetAll Booking 
+	 */
+	@Override
+	public List<BookingItem> getAllBookingItems() throws BookingItemException{
+		try {
+			return iBookingItemRepositoryDao.findAll();
+		}catch(DataAccessException e) {
+			//converting SQLException to EmployeeException
+			throw new BookingItemException(e.getMessage());
+		}catch(Exception e) {
+			//converting SQLException to EmployeeException
+			throw new BookingItemException(e.getMessage());
+		}
+	}
 	
 	
 

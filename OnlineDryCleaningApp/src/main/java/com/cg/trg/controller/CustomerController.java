@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+
 import com.cg.trg.entity.AddAddress;
 import com.cg.trg.entity.AddBooking;
 import com.cg.trg.entity.AddBookingItem;
@@ -139,15 +140,20 @@ public class CustomerController {
 			consumes = "Customer Object",
 			tags = "Update customer record",
 			httpMethod = "PUT")
-	@PutMapping("/customers")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+	@PutMapping("/customers/{customerId}")
+	public ResponseEntity<Customer> updateCustomer(@PathVariable Long customerId,@RequestBody Customer customer) {
 		try {
-			Customer cust= customerService.updateCustomer(customer);
-			return new ResponseEntity<>(cust, HttpStatus.OK);
+			Customer cust= customerService.getCustomer(customerId);
+			cust.setContactNo(customer.getContactNo());
+			cust.setCustomerName(customer.getCustomerName());
+			cust.setEmailId(customer.getEmailId());
+		return new ResponseEntity<>(customerService.updateCustomer(cust), HttpStatus.OK);
 		}catch(CustomerException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
+	
+
 	
 	/**
 	 * 
@@ -160,7 +166,7 @@ public class CustomerController {
 			tags = "get-customer",
 			consumes = "customerId",
 			httpMethod = "GET")
-	@GetMapping("/customer/{customerId}")
+	@GetMapping("/customers/{customerId}")
 	public ResponseEntity<Customer> getCustomer(@PathVariable Long customerId){
 		try {
 			Customer cust= customerService.getCustomer(customerId);
@@ -183,6 +189,35 @@ public class CustomerController {
 			List<Customer> customerList = customerService.getAllCustomers();
 			return new ResponseEntity<>(customerList, HttpStatus.OK);
 		}catch(CustomerException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+	}
+	
+	@ApiOperation(value = "Get all bookings",
+			response = Booking.class,
+			tags = "get-all-bookings",			
+			httpMethod = "GET")
+	@GetMapping("/booking")
+	public ResponseEntity<List<Booking>> getAllBookings(){
+		try {
+			List<Booking> bookingList = bookingService.getAllBookings();
+			return new ResponseEntity<>(bookingList, HttpStatus.OK);
+		}catch(BookingException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+	}
+	
+	
+	@ApiOperation(value = "Get all bookings Items",
+			response = BookingItem.class,
+			tags = "get-all-bookings-items",			
+			httpMethod = "GET")
+	@GetMapping("/bookingitem")
+	public ResponseEntity<List<BookingItem>> getAllBookingItems(){
+		try {
+			List<BookingItem> bookingList = bookingItemService.getAllBookingItems();
+			return new ResponseEntity<>(bookingList, HttpStatus.OK);
+		}catch(BookingItemException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
@@ -240,15 +275,21 @@ public class CustomerController {
 			tags = "update booking",
 			consumes = "booking",
 			httpMethod = "PUT")
-	@PutMapping("/booking")
-	public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking) {
+	@PutMapping("/booking/{bookingId}")
+	public ResponseEntity<Booking> updateBooking(@PathVariable Long bookingId,@RequestBody Booking booking) {
 		try {
-			Booking bkg= bookingService.updateBooking(booking);
-			return new ResponseEntity<>(bkg, HttpStatus.OK);
+			
+			Booking bkg= bookingService.getBookingbyId(bookingId);
+			bkg.setBookingType(booking.getBookingType());
+			bkg.setBookingStatus(booking.getBookingStatus());
+			
+			return new ResponseEntity<>(bookingService.updateBooking(bkg),HttpStatus.OK);
 		}catch(BookingException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
+	
+
 	/**
 	 * 
 	 * @param bookingId
@@ -345,15 +386,21 @@ public class CustomerController {
 			consumes = "BookingItem",
 			tags = "Update Booking item record",
 			httpMethod = "PUT")
-	@PutMapping("/bookingitem1")
-	public ResponseEntity<BookingItem> updateBookingItem(@RequestBody BookingItem item) {
+	@PutMapping("/bookingitem/{bookingItemId}")
+	public ResponseEntity<BookingItem> updateBookingItem(@PathVariable Long bookingItemId,@RequestBody BookingItem item) {
 		try {
-			BookingItem bitem= bookingItemService.updateBookingItem(item);
-			return new ResponseEntity<>(bitem, HttpStatus.OK);
+			BookingItem bitem= bookingItemService.getBookingItem(bookingItemId);
+			bitem.setCategory(item.getCategory());
+			bitem.setDescription(item.getDescription());
+			bitem.setServiceType(item.getServiceType());
+			bitem.setQuantity(item.getQuantity());
+			return new ResponseEntity<>(bookingItemService.updateBookingItem(bitem), HttpStatus.OK);
 		}catch(BookingItemException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
+	
+
 	/**
 	 * 
 	 * @param bookingItemId

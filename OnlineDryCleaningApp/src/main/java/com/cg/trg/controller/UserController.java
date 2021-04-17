@@ -68,10 +68,10 @@ public class UserController {
 			consumes = "user Object",
 			tags = "sign in",
 			httpMethod = "GET")
-	@GetMapping("/signin/{emailId}/{password}")
-	public ResponseEntity<String> signIn(@PathVariable String emailId,@PathVariable String password){
+	@GetMapping("/signin/{emailId}/{password}/{userType}")
+	public ResponseEntity<String> signIn(@PathVariable String emailId,@PathVariable String password,@PathVariable String userType){
 		try {
-			String sign = service.SignIn(emailId,password);
+			String sign = service.SignIn(emailId,password,userType);
 			return new ResponseEntity<>(sign, HttpStatus.OK);
 		}catch(Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());

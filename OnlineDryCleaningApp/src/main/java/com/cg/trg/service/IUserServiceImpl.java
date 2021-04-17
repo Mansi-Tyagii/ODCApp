@@ -68,13 +68,13 @@ public class IUserServiceImpl implements IUserService{
      * This method is used to signIn User Using EmailId and Password
      */
 	@Override
-	public String SignIn(String emailId, String password) throws UserException {
+	public String SignIn(String emailId, String password, String userType) throws UserException {
 		try {			
 			Optional<User> optional = iUserRepositoryDao.findByEmailId(emailId);
 			if(optional.isPresent()) {
 				User user = optional.get();
-				if(user.getPassword().equals(password)) {
-					return "SignIn Done";
+				if(user.getPassword().equals(password)&& user.getUserType().equalsIgnoreCase(userType)) {
+					return user.getUserType();
 				}else {
 					
 					return "Please Enter Correct Password";
